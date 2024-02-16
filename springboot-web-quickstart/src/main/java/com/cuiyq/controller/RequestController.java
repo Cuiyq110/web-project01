@@ -2,11 +2,11 @@ package com.cuiyq.controller;
 
 
 import com.cuiyq.domain.User;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
@@ -60,5 +60,34 @@ public class RequestController {
     public String ListParam(@RequestParam List<String> hobby) {
         System.out.println("hobby:" + hobby);
         return "hobby:" + hobby;
+    }
+
+//    日期参数
+    @RequestMapping("/dataParam")
+    public String dataParam(@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime updateTime) {
+        System.out.println("updateTime:" + updateTime);
+        return "updateTime:" + updateTime;
+    }
+
+//    json参数
+    @RequestMapping("/jsonParam")
+    public String jsonParam(@RequestBody User user) {
+        System.out.println("user:" + user);
+        return "user:" + user;
+    }
+
+//    路径参数
+    @RequestMapping("/pathParam/{userId}")
+    public String pathParam(@PathVariable("userId") String userId) {
+        System.out.println("userId:" + userId);
+        return "userId:" + userId;
+    }
+
+
+    //    路径参数
+    @RequestMapping("/pathParam/{userId}/{name}")
+    public String pathParam(@PathVariable String userId, @PathVariable String name) {
+        System.out.println("userId:" + userId + ",name:" + name);
+        return "userId:" + userId + ",name:" + name;
     }
 }
