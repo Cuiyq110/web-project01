@@ -1,12 +1,14 @@
 package com.cuiyq.controller;
 
+
 import com.cuiyq.domain.User;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author Cuiyq
@@ -38,5 +40,25 @@ public class RequestController {
     public String simpleParam3(User user) {
         System.out.println("user:" + user);
         return "user:" + user;
+    }
+
+//  复杂实体参数
+    @RequestMapping("/complexParam")
+    public String complexParam(User user) {
+        System.out.println("user:" + user);
+        return "user:" + user;
+    }
+
+//    数组和集合参数
+    @RequestMapping("/arrayParam")
+    public String arrayParam(String[] hobby) {
+        System.out.println("hobby:" + Arrays.toString(hobby));
+        return "hobby:" + hobby;
+    }
+
+    @RequestMapping("/listParam")
+    public String ListParam(@RequestParam List<String> hobby) {
+        System.out.println("hobby:" + hobby);
+        return "hobby:" + hobby;
     }
 }

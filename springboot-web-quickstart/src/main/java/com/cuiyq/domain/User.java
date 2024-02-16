@@ -1,6 +1,6 @@
 package com.cuiyq.domain;
 
-import org.apache.tomcat.jni.Address;
+
 
 /**
  * @author Cuiyq
@@ -11,7 +11,7 @@ public class User {
     private String name;
     private Integer age;
 
-    private Address address;
+   private Address address;
 
     public String getName() {
         return name;
@@ -42,7 +42,7 @@ public class User {
         return "User{" +
                 "name='" + name + '\'' +
                 ", age=" + age +
-                ", address=" + address +
+                ", address=" + address.toString() +
                 '}';
     }
 }
