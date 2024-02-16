@@ -1,6 +1,7 @@
 package com.cuiyq.controller;
 
 import com.cuiyq.domain.Address;
+import com.cuiyq.domain.Result;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,22 +16,26 @@ import java.util.List;
 @RestController
 public class ResponseController {
     @RequestMapping("/hello1")
-    public String Hello1(String name)
+    public Result Hello1(String name)
     {
-        return "Hello1 " + name;
+//        return "Hello1 " + name;
+
+        return Result.success("Hello");
     }
 
     @RequestMapping("/addr")
-    public String getAddr() {
+    public Result getAddr() {
         Address address = new Address();
         address.setProvince("tom");
         address.setCity("北京");
-        return address.toString();
+//        return address.toString();
+
+        return Result.success(address);
     }
 
-    @RequestMapping("/user")
-    public String listAddr() {
-        List<Address> addresses = new ArrayList<>();
+    @RequestMapping("/listaddr")
+    public Result listAddr() {
+        List<Address> list = new ArrayList<>();
         Address address = new Address();
         address.setProvince("tom");
         address.setCity("北京");
@@ -38,9 +43,11 @@ public class ResponseController {
         Address address1 = new Address();
         address1.setProvince("tom1");
         address1.setCity("北京1");
-        addresses.add(address);
-        addresses.add(address1);
-        return addresses.toString();
+        list.add(address);
+        list.add(address1);
+//        return addresses.toString();
+        System.out.println(Result.success(list));
+        return Result.success(list);
     }
 
 
