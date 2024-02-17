@@ -3,6 +3,8 @@ package com.cuiyq.service;
 import com.cuiyq.dao.EmpDao;
 import com.cuiyq.domain.Emp;
 import com.cuiyq.domain.Result;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -11,8 +13,10 @@ import java.util.List;
  * @version 1.0
  * describe：
  */
+@Component
 public class EmpService {
-    private EmpDao empDao = new EmpDao();
+    @Autowired
+    private EmpDao empDao;
 
     public List<Emp> list() {
         List<Emp> list = empDao.list();
