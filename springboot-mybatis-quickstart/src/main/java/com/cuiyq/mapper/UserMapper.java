@@ -16,6 +16,6 @@ import java.util.List;
 public interface UserMapper {
 
 
-    @Select("select * from user")
+    @Select("select id, name, age, gender, phone from user")
     public List<User> selectAll();
 }
