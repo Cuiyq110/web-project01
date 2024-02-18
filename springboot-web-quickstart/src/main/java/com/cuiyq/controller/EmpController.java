@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -19,8 +20,9 @@ import java.util.List;
 @RestController
 public class EmpController {
 
-    @Qualifier("empServiceB")
-    @Autowired
+//    @Qualifier("empServiceB")
+//    @Autowired
+    @Resource(name = "empServiceA")
     private EmpService empService1;
 
     @RequestMapping("/listEmp")
