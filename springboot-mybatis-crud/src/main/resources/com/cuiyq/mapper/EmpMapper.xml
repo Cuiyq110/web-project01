@@ -6,9 +6,16 @@
 <mapper namespace="com.cuiyq.mapper.EmpMapper">
     <select id="list" resultType="com.cuiyq.domain.Emp">
         select * from emp
-        where name like concat('%',#{name},'%') and
-        gender=#{gender} and
-        entrydate between #{begin} and #{end}
+        <where>
+            <if test="name!=null and name!=''">
+            </if>
+            <if test="gender!=null and gender!=''">
+                and gender=#{gender}
+            </if>
+            <if test="begin!=null and end!=null">
+                and entrydate between #{begin} and #{end}
+            </if>
+        </where>
         order by update_time desc
     </select>
 </mapper>

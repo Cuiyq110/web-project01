@@ -22,7 +22,8 @@ class SpringbootMybatisCrudApplicationTests {
     @Test
     void testList() {
 
-        List<Emp> list = mapper.list("张", (short)1, LocalDate.of(2010,1,1), LocalDate.of(2020,1,1));
+//        List<Emp> list = mapper.list("张", (short)1, LocalDate.of(2010,1,1), LocalDate.of(2020,1,1));
+        List<Emp> list = mapper.list("张", null,null,null);
         System.out.println(list);
     }
 
