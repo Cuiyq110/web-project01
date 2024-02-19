@@ -14,12 +14,15 @@ import java.util.List;
 @Mapper
 public interface EmpMapper {
 
-//    条件查询
-    @Select("select id, username, password, name, gender, image, job, entrydate, dept_id, create_time, update_time" +
-            " from emp" +
-            " where name like concat('%',#{name},'%') and gender= #{gender} and entrydate between #{begin} and #{end}" +
-            " order by update_time desc")
+//    使用xml映射方式进行对数据的查询操作
     public List<Emp> list(@Param("name") String name, @Param("gender") Short gender, @Param("begin")LocalDate begin, @Param("end")LocalDate end);
+
+//    条件查询
+//    @Select("select id, username, password, name, gender, image, job, entrydate, dept_id, create_time, update_time" +
+//            " from emp" +
+//            " where name like concat('%',#{name},'%') and gender= #{gender} and entrydate between #{begin} and #{end}" +
+//            " order by update_time desc")
+//    public List<Emp> list(@Param("name") String name, @Param("gender") Short gender, @Param("begin")LocalDate begin, @Param("end")LocalDate end);
 //    public List<Emp> list( String name,  Short gender, LocalDate begin, LocalDate end);
 
     /**
