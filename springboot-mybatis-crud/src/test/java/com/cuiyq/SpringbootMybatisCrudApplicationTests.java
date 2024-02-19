@@ -46,4 +46,10 @@ class SpringbootMybatisCrudApplicationTests {
 
     }
 
+    @Test
+    void testSelectElementById() {
+        Emp emp = mapper.GetElementById(18);
+        System.out.println(emp);
+    }
+
 }
