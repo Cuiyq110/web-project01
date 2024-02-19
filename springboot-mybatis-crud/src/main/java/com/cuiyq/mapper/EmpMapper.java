@@ -12,6 +12,15 @@ import org.apache.ibatis.annotations.*;
 public interface EmpMapper {
 
     /**
+     * 更新
+     * @param emp
+     * @return
+     */
+
+    @Update("update emp set username=#{username}, name=#{name}, gender=#{gender}, image=#{image}, job=#{job}, entrydate=#{entrydate}, dept_id=#{deptId},update_time=#{updateTime} where id=#{id}")
+    public int update(Emp emp);
+
+    /**
      * 查询
      * @param id 根据id查询单条记录
      * @return

@@ -52,4 +52,24 @@ class SpringbootMybatisCrudApplicationTests {
         System.out.println(emp);
     }
 
+    @Test
+    void testUpdate() {
+        Emp emp = new Emp();
+        emp.setId(18);
+        emp.setUsername("啊嘞");
+        emp.setPassword("123456");
+        emp.setName("啊嘞");
+        emp.setGender((short) 1);
+        emp.setImage("123456");
+        emp.setJob((short) 1);
+        emp.setEntrydate(LocalDate.of(2000, 1, 1));
+        emp.setDeptId(1);
+        emp.setUpdateTime(LocalDateTime.now());
+        if (mapper.update(emp) > 0) {
+            System.out.println("修改成功");
+        } else {
+            System.out.println("修改失败");
+        }
+    }
+
 }
