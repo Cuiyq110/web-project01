@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.List;
 
 @SpringBootTest
@@ -17,6 +18,17 @@ class SpringbootMybatisCrudApplicationTests {
     @Autowired
     private EmpMapper mapper;
 
+//    批量删除
+    @Test
+    void testDelete() {
+        List<Integer> list = Arrays.asList(18,20,21);
+
+        if (mapper.deletesByIds(list) > 0) {
+            System.out.println("删除成功");
+        } else {
+            System.out.println("未对数据库进行操作");
+        }
+    }
 
 //    条件查询测试
     @Test

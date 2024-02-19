@@ -15,6 +15,9 @@ import java.util.List;
 public interface EmpMapper {
 
 
+//    使用foreach进行批量删除
+    public int deletesByIds(@Param("ids") List<Integer> ids);
+
 //   使用xml映射进行动态sql更新
     public int update2(Emp emp);
 
