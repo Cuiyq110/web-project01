@@ -88,5 +88,26 @@ class SpringbootMybatisCrudApplicationTests {
         }
     }
 
+//    动态更新员工
+    @Test
+    public void testUpdate2() {
+        Emp emp = new Emp();
+        emp.setId(20);
+//        emp.setUsername("jack");
+        emp.setPassword("123456");
+        emp.setName("啊嘞1");
+        emp.setGender((short) 1);
+//        emp.setImage("123456");
+//        emp.setJob((short) 1);
+//        emp.setEntrydate(LocalDate.of(2000, 1, 1));
+//        emp.setDeptId(1);
+//        emp.setUpdateTime(LocalDateTime.now());
+        if (mapper.update2(emp) > 0) {
+            System.out.println("修改成功");
+        } else {
+            System.out.println("修改失败");
+        }
+    }
+
 
 }

@@ -14,6 +14,10 @@ import java.util.List;
 @Mapper
 public interface EmpMapper {
 
+
+//   使用xml映射进行动态sql更新
+    public int update2(Emp emp);
+
 //    使用xml映射方式进行对数据的查询操作
     public List<Emp> list(@Param("name") String name, @Param("gender") Short gender, @Param("begin")LocalDate begin, @Param("end")LocalDate end);
 
