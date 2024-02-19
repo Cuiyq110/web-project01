@@ -9,12 +9,24 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @SpringBootTest
 class SpringbootMybatisCrudApplicationTests {
 
     @Autowired
     private EmpMapper mapper;
+
+
+//    条件查询测试
+    @Test
+    void testList() {
+
+        List<Emp> list = mapper.list("张", (short)1, LocalDate.of(2010,1,1), LocalDate.of(2020,1,1));
+        System.out.println(list);
+    }
+
+//   删除数据测试
     @Test
     void contextLoads() {
         if (mapper.DelById(16) > 0) {
@@ -24,6 +36,7 @@ class SpringbootMybatisCrudApplicationTests {
         }
     }
 
+//    测试增加数据
     @Test
     void testInsert() {
         Emp emp = new Emp();
@@ -46,12 +59,14 @@ class SpringbootMybatisCrudApplicationTests {
 
     }
 
+//    根据id查对象测试
     @Test
     void testSelectElementById() {
         Emp emp = mapper.GetElementById(18);
         System.out.println(emp);
     }
 
+//    更新测试
     @Test
     void testUpdate() {
         Emp emp = new Emp();
@@ -71,5 +86,6 @@ class SpringbootMybatisCrudApplicationTests {
             System.out.println("修改失败");
         }
     }
+
 
 }

@@ -3,6 +3,9 @@ package com.cuiyq.mapper;
 import com.cuiyq.domain.Emp;
 import org.apache.ibatis.annotations.*;
 
+import java.time.LocalDate;
+import java.util.List;
+
 /**
  * @author Cuiyq
  * @version 1.0
@@ -10,6 +13,14 @@ import org.apache.ibatis.annotations.*;
  */
 @Mapper
 public interface EmpMapper {
+
+//    条件查询
+    @Select("select id, username, password, name, gender, image, job, entrydate, dept_id, create_time, update_time" +
+            " from emp" +
+            " where name like concat('%',#{name},'%') and gender= #{gender} and entrydate between #{begin} and #{end}" +
+            " order by update_time desc")
+    public List<Emp> list(@Param("name") String name, @Param("gender") Short gender, @Param("begin")LocalDate begin, @Param("end")LocalDate end);
+//    public List<Emp> list( String name,  Short gender, LocalDate begin, LocalDate end);
 
     /**
      * 更新
@@ -26,11 +37,11 @@ public interface EmpMapper {
      * @return
      */
 //    第二种方式
-//    @Results(
-//            {@Result(column = "dept_id", property = "deptId"),
-//            @Result(column = "create_time", property = "createTime"),
-//            @Result(column = "update_time", property = "updateTime")
-//            })
+    @Results(
+            {@Result(column = "dept_id", property = "deptId"),
+            @Result(column = "create_time", property = "createTime"),
+            @Result(column = "update_time", property = "updateTime")
+            })
 
     @Select("select * from emp where id=#{id}")
     Emp GetElementById(int id);
