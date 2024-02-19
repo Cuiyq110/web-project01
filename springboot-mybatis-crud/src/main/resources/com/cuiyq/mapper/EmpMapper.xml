@@ -5,6 +5,10 @@
 
 <mapper namespace="com.cuiyq.mapper.EmpMapper">
 
+    <sql id="commonSelect">
+        select id, username, name, gender, image, job, entrydate, dept_id, create_time, update_time
+        from emp
+    </sql>
     <!--根据id批量删除-->
     <delete id="deletesByIds">
         delete from emp where id in
@@ -48,9 +52,10 @@
     </update>
 
     <select id="list" resultType="com.cuiyq.domain.Emp">
-        select * from emp
+        <include refid="commonSelect"></include>
         <where>
             <if test="name!=null and name!=''">
+                and name like concat('%',#{name},'%')
             </if>
             <if test="gender!=null and gender!=''">
                 and gender=#{gender}
